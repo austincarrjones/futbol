@@ -35,3 +35,8 @@ Include link to your initial DTR document and the date it was completed. If you 
 [Github](https://github.com/austincarrjones)
 [Linkedin](https://www.linkedin.com/in/austin-carr-jones-47413557/)
 
+**Zach Bergman**
+[Github](https://github.com/zach-bergman)
+[Linkedin](www.linkedin.com/in/zachery-bergman-4a5801184)
+
+
