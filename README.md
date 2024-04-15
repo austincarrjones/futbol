@@ -26,4 +26,7 @@ Include link to your initial DTR document and the date it was completed. If you 
 - [DTR](https://docs.google.com/document/d/13hiA8hj1HZM2o0zTHhRX0_qsNTrrIfLpKwEomGIiEME/edit)
 - April 15, 2024
 
-Create a section in your README called “Contributors”. List each group member’s name and link to their LinkedIn and Github profiles.
+### Contributors
+**Noah Durbin**
+[Github](https://github.com/noahdurbin)
+[Linkedin](https://www.linkedin.com/feed/)
