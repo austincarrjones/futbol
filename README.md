@@ -29,7 +29,7 @@ Include link to your initial DTR document and the date it was completed. If you 
 ### Contributors
 **Noah Durbin**
 [Github](https://github.com/noahdurbin)
-[Linkedin](https://www.linkedin.com/feed/)
+[Linkedin](https://www.linkedin.com/in/noah-durbin-303a58170/)
 
 **Austin Carr-Jones**
 [Github](https://github.com/austincarrjones)
