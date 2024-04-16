@@ -1,4 +1,6 @@
 require 'simplecov'
+require 'CSV'
+require './lib/team_factory'
 
 SimpleCov.start
 
