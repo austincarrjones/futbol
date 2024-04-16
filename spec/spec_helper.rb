@@ -7,3 +7,4 @@ RSpec.configure do |config|
 end
 
 require 'pry'
+require "./lib/game_team_factory"
