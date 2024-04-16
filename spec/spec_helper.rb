@@ -7,3 +7,6 @@ RSpec.configure do |config|
 end
 
 require 'pry'
+require 'csv'
+require './lib/game'
+require './lib/game_factory'
