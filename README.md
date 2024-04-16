@@ -34,6 +34,6 @@
 
 **Zach Bergman**
 [Github](https://github.com/zach-bergman)
-[Linkedin](www.linkedin.com/in/zachery-bergman-4a5801184)
+[Linkedin](https://www.linkedin.com/in/zachery-bergman-4a5801184/)
 
 
