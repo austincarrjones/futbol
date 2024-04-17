@@ -1,3 +1,5 @@
+require "csv"
+
 class GameTeamFactory
   @@game_teams = []
 
