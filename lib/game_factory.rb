@@ -1,13 +1,9 @@
 class GameFactory
-  attr_reader :games
-
-  def initialize
-    @games = []
-  end
+  @@games = []
 
   def create_games(path)
-    CSV.foreach((path), headers: true, header_converters: :symbol) do |row|
-      @games << Game.new(
+    CSV.foreach(path, headers: true, header_converters: :symbol) do |row|
+      @@games << Game.new(
         game_id: row[:game_id], 
         season: row[:season], 
         type: row[:type], 
@@ -19,5 +15,10 @@ class GameFactory
         venue: row[:venue], 
         venue_link: row[:venue_link])
     end
+    @@games
+  end
+
+  def self.all_games
+    @@games
   end
 end
