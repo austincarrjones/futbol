@@ -64,5 +64,19 @@ RSpec.describe GameTeam do
         expect(GameTeam.coach_game_count("20122013")).to eq(expected)
       end
     end
+
+    describe "#coach_win_count - helper" do
+      it "returns a Hash of the number of games a coach won for a specified season" do
+        expected = {
+          "John Tortorella" => 0,
+          "Claude Julien" => 9,
+          "Dan Bylsma" => 0,
+          "Mike Babcock" => 0,
+          "Joel Quenneville" => 1
+        }
+
+        expect(GameTeam.coach_win_count("20122013").to eq(expected)
+      end
+    end
   end
 end
