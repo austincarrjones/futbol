@@ -54,4 +54,18 @@ RSpec.describe Game do
       expect(Game.lowest_total_score).to eq(1)
     end
   end
+
+  describe 'can calculate percentage of wins' do
+    it 'can calculate percentage of home wins' do
+
+    end
+
+    it 'can calculate percentage of away wins' do
+
+    end
+
+    it 'can tell if a home team won or away team won' do
+      
+    end
+  end
 end
