@@ -8,3 +8,4 @@ end
 
 require 'pry'
 require "./lib/game_team_factory"
+require "./lib/game_team"
