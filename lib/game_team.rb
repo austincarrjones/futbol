@@ -32,4 +32,15 @@ class GameTeam
         @giveaways = gameteam_data[:giveaways]
         @takeaways = gameteam_data[:takeaways]
     end
+
+    def self.coach_game_count(season)
+      counter = Hash.new(0)
+
+      GameTeamFactory.all_game_teams.each do |game_team|
+        if season[0..3] == game_team.game_id[0..3]
+          counter[game_team.head_coach] += 1
+        end
+      end
+      counter
+    end
 end
