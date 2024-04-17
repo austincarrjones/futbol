@@ -56,7 +56,7 @@ class GameTeam
 
     #fewest_tackles
 
-    #mmost_accurate_team
+    #most_accurate_team
 
     #least_accurate_team
 end
