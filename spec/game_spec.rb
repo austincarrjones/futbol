@@ -51,7 +51,7 @@ RSpec.describe Game do
       factory = GameFactory.new
       factory.create_games("./fixtures/games_fixture.csv")
 
-      expect(Game.lowest_total_score).to eq(2)
+      expect(Game.lowest_total_score).to eq(1)
     end
   end
 end
