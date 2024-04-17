@@ -57,8 +57,10 @@ RSpec.describe GameTeam do
           "John Tortorella" => 5,
           "Claude Julien" => 9,
           "Dan Bylsma" => 4,
-          "Mike Babcock" => 1,
-          "Joel Quenneville" => 1
+          "Mike Babcock" => 7,
+          "Joel Quenneville" => 7,
+          "Michel Therrien" => 4,
+          "Paul MacLean" =>4
         }
 
         expect(GameTeam.coach_game_count("20122013")).to eq(expected)
@@ -72,10 +74,18 @@ RSpec.describe GameTeam do
           "Claude Julien" => 9,
           "Dan Bylsma" => 0,
           "Mike Babcock" => 0,
-          "Joel Quenneville" => 1
+          "Joel Quenneville" => 1,
+          "Michel Therrien" => 0,
+          "Paul MacLean" => 2
         }
 
         expect(GameTeam.coach_win_count("20122013")).to eq(expected)
+      end
+    end
+
+    describe "#winningest_coach" do
+      it "returns the coach's name with the highest win percentage for specified season" do
+        expect(GameTeam.winningest_coach("20122013")).to eq("Claude Julien")
       end
     end
   end
