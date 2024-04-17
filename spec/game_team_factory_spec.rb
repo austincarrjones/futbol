@@ -4,6 +4,7 @@ RSpec.describe GameTeamFactory do
   describe "#initialize" do
     it "exists" do
       factory = GameTeamFactory.new
+      
       expect(factory).to be_a GameTeamFactory
     end
   end
