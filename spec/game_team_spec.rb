@@ -75,7 +75,7 @@ RSpec.describe GameTeam do
           "Joel Quenneville" => 1
         }
 
-        expect(GameTeam.coach_win_count("20122013").to eq(expected)
+        expect(GameTeam.coach_win_count("20122013")).to eq(expected)
       end
     end
   end
