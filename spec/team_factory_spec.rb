@@ -16,7 +16,6 @@ RSpec.describe TeamFactory do
   it "#count_of_teams" do
     team_factory = TeamFactory.new
     team_factory.create_teams
-    binding.pry
     expect(team_factory.count_of_teams).to eq 32
   end
 
