@@ -1,5 +1,5 @@
 class TeamFactory
-
+  
   def initialize
     @teams = []
   end
@@ -16,4 +16,9 @@ class TeamFactory
     end
     @teams
   end
+  
+  def count_of_teams
+    @teams.count
+  end
+
 end

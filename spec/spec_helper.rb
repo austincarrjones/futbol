@@ -1,9 +1,4 @@
-SimpleCov.start
-
-RSpec.configure do |config|
-    config.formatter = :documentation
-end
-
+require 'simplecov'
 require 'csv'
 require 'pry'
 require './lib/game'
@@ -13,3 +8,8 @@ require './lib/game_factory'
 require './lib/team_factory'
 require './lib/team'
 
+SimpleCov.start
+
+RSpec.configure do |config|
+    config.formatter = :documentation
+end

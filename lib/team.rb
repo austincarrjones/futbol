@@ -15,4 +15,6 @@ class Team
     @link = teams_data[:link]
   end
 
+    # binding.pry
+
 end

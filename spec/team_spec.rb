@@ -11,7 +11,7 @@ RSpec.describe TeamFactory do
     team_factory = TeamFactory.new
     team_1 = Team.new({team_id: 1, franchise_id: 23, team_name: "Atlanta United", abbreviation: "ATL", stadium: "Mercedes-Benz Stadium", link: "/api/v1/teams/1"})
     
-    # binding.pry
+    binding.pry
     expect(team_1.team_id).to eq 1
     expect(team_1.franchise_id).to eq 23
     expect(team_1.team_name).to eq "Atlanta United"
