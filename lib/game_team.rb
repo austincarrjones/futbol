@@ -50,14 +50,27 @@ class GameTeam
       GameTeamFactory.all_game_teams.each do |game_team|
         if season[0..3] == game_team.game_id[0..3] && game_team.result == "WIN"
             counter[game_team.head_coach] += 1
-        else counter[game_team.head_coach].nil?
+        else counter[game_team.head_coach] == 0
           counter[game_team.head_coach] = 0
         end
       end
       counter
     end
 
-    #winningest_coach
+    def self.winningest_coach(season)
+      coach_win_percentage = {}
+      coach_win_count_var = coach_win_count(season)
+
+      coach_game_count(season).each do |coach, game_count|
+        if coach_win_count_var[coach] == 0
+          coach_win_percentage[coach] = 0
+        else
+          coach_win_percentage[coach] = coach_win_count_var[coach] / game_count.to_f
+        end
+        coach_win_percentage
+      end
+      coach_win_percentage.compact.max_by { |coach, percent| percent }.first
+    end
 
     #worst_coach
 
