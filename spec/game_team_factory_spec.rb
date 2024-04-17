@@ -1,9 +1,12 @@
 require "spec_helper"
 
 RSpec.describe GameTeamFactory do
-  # before(:each) do
-  #   @factory = GameTeamFactory.new
-  # end
+  describe "#initialize" do
+    it "exists" do
+      factory = GameTeamFactory.new
+      expect(factory).to be_a GameTeamFactory
+    end
+  end
 
   describe "#create_from_csv" do
     it "create GameTeam objects from csv file" do
