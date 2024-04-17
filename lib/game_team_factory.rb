@@ -22,8 +22,13 @@ class GameTeamFactory
         giveaways: row[:giveaways],
         takeaways: row[:takeaways]
       }
+
       @@game_teams << GameTeam.new(game_team_data)
     end
+    @@game_teams
+  end
+
+  def self.all_game_teams
     @@game_teams
   end
 end
