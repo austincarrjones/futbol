@@ -12,17 +12,23 @@ class Game
     @date_time = game_data[:date_time]
     @away_team_id = game_data[:away_team_id]
     @home_team_id = game_data[:home_team_id]
-    @away_goals = game_data[:away_goals]
-    @home_goals = game_data[:home_goals]
+    @away_goals = game_data[:away_goals].to_i
+    @home_goals = game_data[:home_goals].to_i
     @venue = game_data[:venue]
     @venue_link = game_data[:venue_link]
+  end
+
+  def self.all_games
+    GameFactory.all_games
   end
 
   def total_score
     @away_goals + @home_goals
   end
 
-  def highest_total_score
-    total_score.max
+  def self.highest_total_score
+    all_games.map do |game|
+      game.total_score
+    end.max
   end
 end
