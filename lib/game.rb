@@ -1,5 +1,4 @@
 class Game
-
   attr_reader :game_id, :season, 
               :type, :date_time, 
               :away_team_id, :home_team_id, 
@@ -17,5 +16,13 @@ class Game
     @home_goals = game_data[:home_goals]
     @venue = game_data[:venue]
     @venue_link = game_data[:venue_link]
+  end
+
+  def total_score
+    @away_goals + @home_goals
+  end
+
+  def highest_total_score
+    total_score.max
   end
 end
