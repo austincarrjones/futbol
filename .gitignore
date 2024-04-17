@@ -1,0 +1,5 @@
+# Ignore the simplecov coverage directory
+coverage
+
+# Ignore the Gemfile.lock file
+Gemfile.lock
