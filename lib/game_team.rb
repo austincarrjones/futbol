@@ -43,4 +43,20 @@ class GameTeam
       end
       counter
     end
+
+    #winningest_coach
+
+    #worst_coach
+
+    #best_offense
+
+    #worst offense
+
+    #most_tackles
+
+    #fewest_tackles
+
+    #mmost_accurate_team
+
+    #least_accurate_team
 end
