@@ -33,6 +33,10 @@ class GameTeam
         @takeaways = gameteam_data[:takeaways]
     end
 
+    def self.all_game_teams
+      GameTeamFactory.all_game_teams
+    end
+
     def self.coach_game_count(season)
       counter = Hash.new(0)
 
