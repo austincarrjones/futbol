@@ -40,7 +40,7 @@ class GameTeam
     def self.coach_game_count(season)
       counter = Hash.new(0)
 
-      GameTeamFactory.all_game_teams.each do |game_team|
+      all_game_teams.each do |game_team|
         if season[0..3] == game_team.game_id[0..3]
           counter[game_team.head_coach] += 1
         end
@@ -51,7 +51,7 @@ class GameTeam
     def self.coach_win_count(season)
       counter = Hash.new(0)
 
-      GameTeamFactory.all_game_teams.each do |game_team|
+      all_game_teams.each do |game_team|
         if season[0..3] == game_team.game_id[0..3] && game_team.result == "WIN"
             counter[game_team.head_coach] += 1
         else counter[game_team.head_coach] == 0
