@@ -51,6 +51,14 @@ RSpec.describe GameTeam do
         @gameteams = GameTeamFactory.create_from_csv("./fixtures/game_teams_fixture.csv")
     end
 
+    describe "#all_game_teams" do
+      it "returns all game_team objects from Factory" do
+        expect(GameTeam.all_game_teams).to be_a(Array)
+        expect(GameTeam.all_game_teams.length).to eq(40)
+        expect(GameTeam.all_game_teams).to all be_a(GameTeam)
+      end
+    end
+
     describe "#coach_game_count - helper" do
       it "returns a Hash of the number of games a coach played for a specified season" do
         expected = {
