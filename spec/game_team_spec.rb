@@ -46,17 +46,23 @@ describe "initialize" do
     end
   end
 
-  describe "#coach_game_count - helper" do
-    it "returns a Hash of the number of games a coach played for a specified season" do
-      expected = {
-        "John Tortorella" => 5,
-        "Claude Julien" => 9,
-        "Dan Bylsma" => 4,
-        "Mike Babcock" => 1,
-        "Joel Quenneville" => 1
-      }
+  describe "GameTeam Class Methods" do
+    before(:all) do
+        @gameteams = GameTeamFactory.create_from_csv("./fixtures/game_teams_fixture.csv")
+    end
 
-      expect(GameTeam.coach_game_count("2012")).to eq(expected)
+    describe "#coach_game_count - helper" do
+      it "returns a Hash of the number of games a coach played for a specified season" do
+        expected = {
+          "John Tortorella" => 5,
+          "Claude Julien" => 9,
+          "Dan Bylsma" => 4,
+          "Mike Babcock" => 1,
+          "Joel Quenneville" => 1
+        }
+        
+        expect(GameTeam.coach_game_count("20122013")).to eq(expected)
+      end
     end
   end
 end
