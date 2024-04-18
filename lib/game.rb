@@ -52,6 +52,10 @@ class Game
     (count_away_wins.to_f / game_count.to_f) * 100.00
   end
 
+  def self.percentage_ties
+
+  end
+
   def self.count_home_wins
     all_games.count do |game|
       game.home_win?
@@ -70,6 +74,14 @@ class Game
 
   def away_win?
     @away_goals > @home_goals
+  end
+
+  def tie?
+    @away_goals == @home_goals
+  end
+
+  def self.count_ties
+
   end
 
   # def format_date
