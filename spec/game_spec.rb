@@ -102,5 +102,27 @@ RSpec.describe Game do
 
       expect(Game.game_count).to eq(20)
     end
+
+    it 'can calculate the percantage of ties' do
+      factory = GameFactory.new
+      factory.create_games("./fixtures/games_fixture.csv")
+
+      expect(Game.percentage_ties).to eq(5.00)
+    end
+
+    it 'can determine if a game was a tie' do
+      game1 = Game.new({game_id: 2012030221, season: 20122013, type: :Postseason, date_time: 5/16/13, away_team_id: 3, home_team_id: 6, away_goals: 2, home_goals: 3, venue: 'Toyota Stadium', venue_link: '/api/v1/venues/null'})
+      game2 = Game.new({game_id: 2012030222, season: 20122013, type: :Postseason, date_time: 5/19/13, away_team_id: 3, home_team_id: 6, away_goals: 3, home_goals: 3, venue: 'Toyota Stadium', venue_link: '/api/v1/venues/null'})
+
+      expect(game1.tie?).to eq(false)
+      expect(game2.tie?).to eq(true)
+    end
+
+    it 'can give a count of total number of tie games' do
+      factory = GameFactory.new
+      factory.create_games("./fixtures/games_fixture.csv")
+
+      expect(Game.count_ties).to eq(1)
+    end
   end
 end
