@@ -93,4 +93,10 @@ class Game
       game.tie?
     end
   end
+
+  def self.average_goals_per_game
+    all_games.sum do |game|
+      game.total_score
+    end / game_count
+  end
 end

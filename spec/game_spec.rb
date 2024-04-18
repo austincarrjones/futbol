@@ -66,7 +66,7 @@ RSpec.describe Game do
       GameFactory.new
       GameFactory.create_games("./fixtures/games_fixture.csv")
 
-      expect(Game.percentage_home_wins).to eq(70.00)
+      expect(Game.percentage_home_wins).to eq(0.7)
 
       GameFactory.reset_games
     end
@@ -75,7 +75,7 @@ RSpec.describe Game do
       GameFactory.new
       GameFactory.create_games("./fixtures/games_fixture.csv")
 
-      expect(Game.percentage_away_wins).to eq(25.00)
+      expect(Game.percentage_away_wins).to eq(0.25)
 
       GameFactory.reset_games
     end
@@ -105,7 +105,7 @@ RSpec.describe Game do
       GameFactory.new
       GameFactory.create_games("./fixtures/games_fixture.csv")
 
-      expect(Game.count_away_wins).to eq(5)
+      expect(Game.count_away_wins).to eq(5.0)
 
       GameFactory.reset_games
     end
@@ -123,7 +123,7 @@ RSpec.describe Game do
       GameFactory.new
       GameFactory.create_games("./fixtures/games_fixture.csv")
 
-      expect(Game.percentage_ties).to eq(5.00)
+      expect(Game.percentage_ties).to eq(0.05)
 
       GameFactory.reset_games
     end
@@ -160,10 +160,13 @@ RSpec.describe Game do
   end
 
   describe 'average goals per game' do
-    GameFactory.new
-    GameFactory.create_games("./fixtures/games_fixture.csv")
+    it 'can calculate average number of goals per game' do
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
 
-    expect(Game.average_goals_per_game).to eq()
-    GameFactory.reset_games
+      expect(Game.average_goals_per_game).to eq(3)
+
+      GameFactory.reset_games
+    end
   end
 end
