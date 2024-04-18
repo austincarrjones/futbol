@@ -1,3 +1,5 @@
+require 'date'
+
 class Game
   attr_reader :game_id, :season, 
               :type, :date_time, 
@@ -9,7 +11,7 @@ class Game
     @game_id = game_data[:game_id].to_i
     @season = game_data[:season].to_i
     @type = game_data[:type]
-    @date_time = game_data[:date_time].to_i
+    @date_time = game_data[:date_time].to_s
     @away_team_id = game_data[:away_team_id].to_i
     @home_team_id = game_data[:home_team_id].to_i
     @away_goals = game_data[:away_goals].to_i
@@ -37,4 +39,53 @@ class Game
       game.total_score
     end.min
   end
+
+  def self.game_count
+    GameFactory.all_games.length
+  end
+
+  def self.percentage_home_wins
+    (count_home_wins.to_f / game_count.to_f) * 100.00
+  end
+
+  def self.percentage_away_wins
+    (count_away_wins.to_f / game_count.to_f) * 100.00
+  end
+
+  def self.count_home_wins
+    win_count = 0
+    all_games.count do |game|
+      if game.home_win?
+        win_count += 1
+      end
+    end
+  end
+
+  def self.count_away_wins
+    win_count = 0
+    all_games.count do |game|
+      if game.away_win?
+        win_count += 1
+      end
+    end
+  end
+
+  def home_win?
+    if @home_goals > @away_goals
+      true
+    else
+      false
+    end
+  end
+
+  def away_win?
+    if @away_goals > @home_goals
+      true
+    else 
+      false
+    end
+  end
+  # def format_date
+  #   Date.strptime(@date_time, "%m/%d/%Y")
+  # end
 end
