@@ -178,6 +178,7 @@ RSpec.describe Game do
         "20122013" => 3
       }
 
+      expect(Game.average_goals_per_season).to eq(expected_outcome)
       GameFactory.reset_games
     end
   end
