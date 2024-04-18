@@ -7,6 +7,7 @@ require "./lib/game_team_factory"
 require './lib/game_factory'
 require './lib/team_factory'
 require './lib/team'
+require 'date'
 
 SimpleCov.start
 
