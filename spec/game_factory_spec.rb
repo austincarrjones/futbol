@@ -5,8 +5,8 @@ RSpec.describe GameFactory do
     it 'creates Game objects' do
       factory = GameFactory.new
       games = factory.create_games("./fixtures/games_fixture.csv")
-# require 'pry'; binding.pry
-      expect(factory.games).to all be_a(Game)
+
+      expect(games).to all be_a(Game)
     end
   end
 end
