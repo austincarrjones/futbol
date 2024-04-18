@@ -26,8 +26,8 @@ RSpec.describe Game do
 
   describe 'total score methods' do
     it 'can return all games' do
-      factory = GameFactory.new
-      factory.create_games("./fixtures/games_fixture.csv")
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
 
       expect(Game.all_games).to be_a(Array)
       expect(Game.all_games.length).to eq(20)
@@ -43,8 +43,8 @@ RSpec.describe Game do
     end
 
     it 'can calculate the highest total score of a game' do
-      factory = GameFactory.new
-      factory.create_games("./fixtures/games_fixture.csv")
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
 
       expect(Game.highest_total_score).to eq(5)
 
@@ -52,8 +52,8 @@ RSpec.describe Game do
     end
 
     it 'can calculate the lowest total score of a game' do
-      factory = GameFactory.new
-      factory.create_games("./fixtures/games_fixture.csv")
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
 
       expect(Game.lowest_total_score).to eq(1)
 
@@ -63,8 +63,8 @@ RSpec.describe Game do
 
   describe 'can calculate percentage of wins' do
     it 'can calculate percentage of home wins' do
-      factory = GameFactory.new
-      factory.create_games("./fixtures/games_fixture.csv")
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
 
       expect(Game.percentage_home_wins).to eq(70.00)
 
@@ -72,8 +72,8 @@ RSpec.describe Game do
     end
 
     it 'can calculate percentage of away wins' do
-      factory = GameFactory.new
-      factory.create_games("./fixtures/games_fixture.csv")
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
 
       expect(Game.percentage_away_wins).to eq(25.00)
 
@@ -93,8 +93,8 @@ RSpec.describe Game do
     end
 
     it 'can count the total number of home wins' do
-      factory = GameFactory.new
-      factory.create_games("./fixtures/games_fixture.csv")
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
 
       expect(Game.count_home_wins).to eq(14)
 
@@ -102,8 +102,8 @@ RSpec.describe Game do
     end
 
     it 'can count the total number of away wins' do
-      factory = GameFactory.new
-      factory.create_games("./fixtures/games_fixture.csv")
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
 
       expect(Game.count_away_wins).to eq(5)
 
@@ -111,8 +111,8 @@ RSpec.describe Game do
     end
 
     it 'can return a count of all games' do
-      factory = GameFactory.new
-      factory.create_games("./fixtures/games_fixture.csv")
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
 
       expect(Game.game_count).to eq(20)
 
@@ -120,8 +120,8 @@ RSpec.describe Game do
     end
 
     it 'can calculate the percantage of ties' do
-      factory = GameFactory.new
-      factory.create_games("./fixtures/games_fixture.csv")
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
 
       expect(Game.percentage_ties).to eq(5.00)
 
@@ -137,8 +137,8 @@ RSpec.describe Game do
     end
 
     it 'can give a count of total number of tie games' do
-      factory = GameFactory.new
-      factory.create_games("./fixtures/games_fixture.csv")
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
 
       expect(Game.count_ties).to eq(1)
 

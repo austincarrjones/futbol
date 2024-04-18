@@ -1,7 +1,7 @@
 class GameFactory
   @@games = []
 
-  def create_games(path)
+  def self.create_games(path)
     CSV.foreach(path, headers: true, header_converters: :symbol) do |row|
       @@games << Game.new(
         game_id: row[:game_id], 
