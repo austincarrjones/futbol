@@ -54,8 +54,6 @@ class GameTeam
       all_game_teams.each do |game_team|
         if season[0..3] == game_team.game_id[0..3] && game_team.result == "WIN"
             counter[game_team.head_coach] += 1
-        else counter[game_team.head_coach] == 0
-          counter[game_team.head_coach] = 0
         end
       end
       counter
