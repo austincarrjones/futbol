@@ -48,13 +48,15 @@ RSpec.describe GameTeam do
 
   describe "GameTeam Class Methods" do
     before(:all) do
-        @gameteams = GameTeamFactory.create_from_csv("./fixtures/game_teams_fixture.csv")
+        GameTeamFactory.create_from_csv("./fixtures/game_teams_fixture.csv")
+        # GameTeamFactory.create_from_csv("./data/game_teams.csv")
+        #run with real data too
     end
 
     describe "#all_game_teams" do
       it "returns all game_team objects from Factory" do
         expect(GameTeam.all_game_teams).to be_a(Array)
-        expect(GameTeam.all_game_teams.length).to eq(40)
+        expect(GameTeam.all_game_teams.length).to eq(78)
         expect(GameTeam.all_game_teams).to all be_a(GameTeam)
       end
     end
@@ -62,38 +64,56 @@ RSpec.describe GameTeam do
     describe "#coach_game_count - helper" do
       it "returns a Hash of the number of games a coach played for a specified season" do
         expected = {
-          "John Tortorella" => 5,
-          "Claude Julien" => 9,
-          "Dan Bylsma" => 4,
-          "Mike Babcock" => 7,
-          "Joel Quenneville" => 7,
-          "Michel Therrien" => 4,
-          "Paul MacLean" =>4
+          "Bruce Boudreau" => 7,
+          "Darryl Sutter" => 7,
+          "Mike Yeo" => 7,
+          "Patrick Roy" => 7,
         }
 
-        expect(GameTeam.coach_game_count("20122013")).to eq(expected)
+        expect(GameTeam.coach_game_count("20132014")).to eq(expected)
+
+        expected = {
+          "Alain Vigneault" => 11,
+          "Dave Cameron" => 6,
+          "Jon Cooper" => 7,
+          "Ken Hitchcock" => 6,
+          "Michel Therrien" => 6,
+          "Mike Johnston" => 4,
+          "Mike Yeo" => 6
+        }
+
+        expect(GameTeam.coach_game_count("20142015")).to eq(expected)
       end
     end
 
     describe "#coach_win_count - helper" do
       it "returns a Hash of the number of games a coach won for a specified season" do
         expected = {
-          "John Tortorella" => 0,
-          "Claude Julien" => 9,
-          "Dan Bylsma" => 0,
-          "Mike Babcock" => 0,
-          "Joel Quenneville" => 1,
-          "Michel Therrien" => 0,
-          "Paul MacLean" => 2
+          "Bruce Boudreau" => 2,
+          "Darryl Sutter" => 5,
+          "Mike Yeo" => 5,
+          "Patrick Roy" => 1,
         }
 
-        expect(GameTeam.coach_win_count("20122013")).to eq(expected)
+        expect(GameTeam.coach_win_count("20132014")).to eq(expected)
+
+        expected = {
+          "Alain Vigneault" => 7,
+          "Dave Cameron" => 3,
+          "Jon Cooper" => 4,
+          "Ken Hitchcock" => 2,
+          "Michel Therrien" => 3,
+          "Mike Yeo" => 3
+        }
+
+        expect(GameTeam.coach_win_count("20142015")).to eq(expected)
       end
     end
 
     describe "#winningest_coach" do
       it "returns the coach's name with the highest win percentage for specified season" do
-        expect(GameTeam.winningest_coach("20122013")).to eq("Claude Julien")
+        expect(GameTeam.winningest_coach("20132014")).to eq("Mike Yeo")
+        expect(GameTeam.winningest_coach("20142015")).to eq("Alain Vigneault")
       end
     end
   end
