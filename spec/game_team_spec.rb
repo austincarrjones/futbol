@@ -116,5 +116,30 @@ RSpec.describe GameTeam do
         expect(GameTeam.winningest_coach("20142015")).to eq("Alain Vigneault")
       end
     end
+
+    describe "#coach_loss_count - helper" do
+      it "returns a Hash of the number of games a coach lost for a specified season" do
+        expected = {
+          "Bruce Boudreau" => 5,
+          "Darryl Sutter" => 2,
+          "Mike Yeo" => 1,
+          "Patrick Roy" => 5,
+        }
+
+        expect(GameTeam.coach_loss_count("20132014")).to eq(expected)
+
+        expected = {
+          "Alain Vigneault" => 4,
+          "Dave Cameron" => 3,
+          "Jon Cooper" => 3,
+          "Ken Hitchcock" => 3,
+          "Michel Therrien" => 3,
+          "Mike Yeo" => 2,
+          "Mike Johnston" => 4
+        }
+
+        expect(GameTeam.coach_loss_count("20142015")).to eq(expected)
+      end
+    end
   end
 end
