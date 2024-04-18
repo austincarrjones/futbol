@@ -7,16 +7,9 @@ RSpec.describe TeamFactory do
     expect(team_factory).to be_a TeamFactory
   end
 
- it 'can create teams' do
-    team_factory = TeamFactory.new
-    teams = team_factory.create_teams
+  it 'can create teams' do
+    teams = TeamFactory.create_teams('./data/teams.csv')
     expect(teams).to all be_a(Team)
-  end
-
-  it "#count_of_teams" do
-    team_factory = TeamFactory.new
-    team_factory.create_teams
-    expect(team_factory.count_of_teams).to eq 32
   end
 
 end

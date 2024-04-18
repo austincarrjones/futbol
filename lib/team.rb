@@ -1,20 +1,18 @@
 class Team
   attr_reader :team_id,
-              :franchise_id,
-              :team_name,
-              :abbreviation,
-              :stadium,
-              :link
+              :team_name
 
   def initialize(teams_data) 
-    @team_id = teams_data[:team_id]
-    @franchise_id = teams_data[:franchise_id]
+    @team_id = teams_data[:team_id].to_i
     @team_name = teams_data[:team_name]
-    @abbreviation = teams_data[:abbreviation]
-    @stadium = teams_data[:stadium]
-    @link = teams_data[:link]
   end
 
-    # binding.pry
+  def self.all_teams
+    TeamFactory.all_teams
+  end
+
+  def self.count_of_teams
+    TeamFactory.all_teams.count
+  end
 
 end
