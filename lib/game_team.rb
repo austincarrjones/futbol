@@ -71,7 +71,7 @@ class GameTeam
         end
         coach_win_percentage
       end
-      coach_win_percentage.compact.max_by { |coach, percent| percent }.first
+        coach_win_percentage.max_by { |coach, percent| percent }.first
     end
 
     def self.worst_coach(season)
@@ -86,7 +86,7 @@ class GameTeam
         end
         coach_win_percentage
       end
-      coach_win_percentage.compact.min_by { |coach, percent| percent }.first
+      coach_win_percentage.min_by { |coach, percent| percent }.first
     end
 
     #best_offense
