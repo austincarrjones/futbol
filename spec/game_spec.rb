@@ -175,7 +175,7 @@ RSpec.describe Game do
       GameFactory.new
       GameFactory.create_games("./fixtures/games_fixture.csv")
       expected_outcome = {
-        "20122013" => 3
+        "20122013" => 3.75
       }
 
       expect(Game.average_goals_per_season).to eq(expected_outcome)

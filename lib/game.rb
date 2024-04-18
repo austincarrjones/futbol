@@ -99,4 +99,14 @@ class Game
       game.total_score
     end / game_count.round(2)
   end
+
+  def self.average_goals_per_season
+    goals_per_season = Hash.new(0)
+    all_games.each do |game|
+      goals_per_season[game.season] += game.total_score
+    end
+    goals_per_season.each do |season, total_goals|
+      goals_per_season[season] = (total_goals / count_of_games_by_season[season].to_f).round(2)
+    end
+  end
 end
