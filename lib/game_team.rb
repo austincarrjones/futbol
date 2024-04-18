@@ -61,31 +61,33 @@ class GameTeam
 
     def self.winningest_coach(season)
       coach_win_percentage = {}
-      coach_win_count_var = coach_win_count(season)
+      coach_win_count_result = coach_win_count(season)
 
       coach_game_count(season).each do |coach, game_count|
-        if coach_win_count_var[coach] == 0
+        if coach_win_count_result[coach] == 0
           coach_win_percentage[coach] = 0
         else
-          coach_win_percentage[coach] = coach_win_count_var[coach] / game_count.to_f
+          coach_win_percentage[coach] = coach_win_count_result[coach] / game_count.to_f
         end
         coach_win_percentage
       end
       coach_win_percentage.compact.max_by { |coach, percent| percent }.first
     end
 
-    def self.coach_loss_count(season)
-      counter = Hash.new(0)
+    def self.worst_coach(season)
+      coach_win_percentage = {}
+      coach_win_count_result = coach_win_count(season)
 
-      all_game_teams.each do |game_team|
-        if season[0..3] == game_team.game_id[0..3] && game_team.result == "LOSS"
-            counter[game_team.head_coach] += 1
+      coach_game_count(season).each do |coach, game_count|
+        if coach_win_count_result[coach] == 0
+          coach_win_percentage[coach] = 0
+        else
+          coach_win_percentage[coach] = coach_win_count_result[coach] / game_count.to_f
         end
+        coach_win_percentage
       end
-      counter
+      coach_win_percentage.compact.min_by { |coach, percent| percent }.first
     end
-
-    #worst_coach
 
     #best_offense
 
