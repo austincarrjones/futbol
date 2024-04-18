@@ -12,7 +12,7 @@ RSpec.describe Game do
       game1 = Game.new({game_id: 2012030221, season: 20122013, type: :Postseason, date_time: '5/16/13', away_team_id: 3, home_team_id: 6, away_goals: 2, home_goals: 3, venue: 'Toyota Stadium', venue_link: '/api/v1/venues/null'})
 
       expect(game1.game_id).to be_a(Integer)
-      expect(game1.season).to be_a(Integer)
+      expect(game1.season).to be_a(String)
       expect(game1.type).to be_a(Symbol)
       expect(game1.date_time).to be_a(String)
       expect(game1.away_team_id).to be_a(Integer)
@@ -142,6 +142,19 @@ RSpec.describe Game do
 
       expect(Game.count_ties).to eq(1)
 
+      GameFactory.reset_games
+    end
+  end
+
+  describe 'games per season' do
+    it 'can return a hash with season and games in that season' do
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
+      resulting_array = {
+        "20122013" => 20
+      }
+
+      expect(Game.count_of_games_by_season).to eq(resulting_array)
       GameFactory.reset_games
     end
   end

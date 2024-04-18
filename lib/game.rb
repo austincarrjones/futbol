@@ -9,7 +9,7 @@ class Game
   
   def initialize(game_data)
     @game_id = game_data[:game_id].to_i
-    @season = game_data[:season].to_i
+    @season = game_data[:season].to_s
     @type = game_data[:type]
     @date_time = game_data[:date_time].to_s
     @away_team_id = game_data[:away_team_id].to_i
@@ -54,6 +54,14 @@ class Game
 
   def self.percentage_ties
     (count_ties.to_f / game_count.to_f) * 100.00
+  end
+
+  def self.count_of_games_by_season
+    games_per_season = Hash.new(0)
+    all_games.each do |game|
+      games_per_season[game.season] += 1
+    end
+    games_per_season
   end
 
   def self.count_home_wins
