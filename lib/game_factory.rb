@@ -21,4 +21,8 @@ class GameFactory
   def self.all_games
     @@games
   end
+
+  def self.reset_games
+    @@games = []
+  end
 end

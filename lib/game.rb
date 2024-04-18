@@ -85,8 +85,4 @@ class Game
       game.tie?
     end
   end
-
-  # def format_date
-  #   Date.strptime(@date_time, "%m/%d/%Y")
-  # end
 end
