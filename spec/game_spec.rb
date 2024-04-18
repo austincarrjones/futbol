@@ -169,4 +169,16 @@ RSpec.describe Game do
       GameFactory.reset_games
     end
   end
+
+  describe 'hash of average goals per season' do
+    it 'can calculate average goals per season and add that to a hash' do
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
+      expected_outcome = {
+        "20122013" => 3
+      }
+
+      GameFactory.reset_games
+    end
+  end
 end
