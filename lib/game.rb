@@ -81,7 +81,9 @@ class Game
   end
 
   def self.count_ties
-
+    all_games.count do |game|
+      game.tie?
+    end
   end
 
   # def format_date
