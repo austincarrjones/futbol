@@ -52,40 +52,37 @@ class Game
     (count_away_wins.to_f / game_count.to_f) * 100.00
   end
 
+  def self.percentage_ties
+    (count_ties.to_f / game_count.to_f) * 100.00
+  end
+
   def self.count_home_wins
-    win_count = 0
     all_games.count do |game|
-      if game.home_win?
-        win_count += 1
-      end
+      game.home_win?
     end
   end
 
   def self.count_away_wins
-    win_count = 0
     all_games.count do |game|
-      if game.away_win?
-        win_count += 1
-      end
+      game.away_win?
     end
   end
 
   def home_win?
-    if @home_goals > @away_goals
-      true
-    else
-      false
-    end
+    @home_goals > @away_goals
   end
 
   def away_win?
-    if @away_goals > @home_goals
-      true
-    else 
-      false
+    @away_goals > @home_goals
+  end
+
+  def tie?
+    @away_goals == @home_goals
+  end
+
+  def self.count_ties
+    all_games.count do |game|
+      game.tie?
     end
   end
-  # def format_date
-  #   Date.strptime(@date_time, "%m/%d/%Y")
-  # end
 end
