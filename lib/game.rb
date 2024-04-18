@@ -97,6 +97,6 @@ class Game
   def self.average_goals_per_game
     all_games.sum do |game|
       game.total_score
-    end / game_count
+    end / game_count.round(2)
   end
 end
