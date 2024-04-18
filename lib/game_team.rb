@@ -74,6 +74,17 @@ class GameTeam
       coach_win_percentage.compact.max_by { |coach, percent| percent }.first
     end
 
+    def self.coach_loss_count(season)
+      counter = Hash.new(0)
+
+      all_game_teams.each do |game_team|
+        if season[0..3] == game_team.game_id[0..3] && game_team.result == "LOSS"
+            counter[game_team.head_coach] += 1
+        end
+      end
+      counter
+    end
+
     #worst_coach
 
     #best_offense
