@@ -45,15 +45,15 @@ class Game
   end
 
   def self.percentage_home_wins
-    (count_home_wins.to_f / game_count.to_f) * 100.00
+    (count_home_wins.to_f / game_count.to_f).round(2)
   end
 
   def self.percentage_away_wins
-    (count_away_wins.to_f / game_count.to_f) * 100.00
+    (count_away_wins.to_f / game_count.to_f).round(2)
   end
 
   def self.percentage_ties
-    (count_ties.to_f / game_count.to_f) * 100.00
+    (count_ties.to_f / game_count.to_f).round(2)
   end
 
   def self.count_of_games_by_season
