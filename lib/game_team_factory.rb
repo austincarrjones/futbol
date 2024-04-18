@@ -3,7 +3,7 @@ require "csv"
 class GameTeamFactory
   @@game_teams = []
 
-  def self.create_from_csv(file_path)
+  def self.create_game_teams(file_path)
     CSV.foreach(file_path, headers: true, header_converters: :symbol) do |row|
       game_team_data = {
         game_id: row[:game_id],
