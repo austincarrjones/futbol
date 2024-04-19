@@ -9,7 +9,7 @@ class Game
   
   def initialize(game_data)
     @game_id = game_data[:game_id].to_i
-    @season = game_data[:season].to_i
+    @season = game_data[:season].to_s
     @type = game_data[:type]
     @date_time = game_data[:date_time].to_s
     @away_team_id = game_data[:away_team_id].to_i
@@ -45,15 +45,23 @@ class Game
   end
 
   def self.percentage_home_wins
-    (count_home_wins.to_f / game_count.to_f) * 100.00
+    (count_home_wins.to_f / game_count.to_f).round(2)
   end
 
   def self.percentage_away_wins
-    (count_away_wins.to_f / game_count.to_f) * 100.00
+    (count_away_wins.to_f / game_count.to_f).round(2)
   end
 
   def self.percentage_ties
-    (count_ties.to_f / game_count.to_f) * 100.00
+    (count_ties.to_f / game_count.to_f).round(2)
+  end
+
+  def self.count_of_games_by_season
+    games_per_season = Hash.new(0)
+    all_games.each do |game|
+      games_per_season[game.season] += 1
+    end
+    games_per_season
   end
 
   def self.count_home_wins
@@ -83,6 +91,22 @@ class Game
   def self.count_ties
     all_games.count do |game|
       game.tie?
+    end
+  end
+
+  def self.average_goals_per_game
+    all_games.sum do |game|
+      game.total_score
+    end / game_count.round(2)
+  end
+
+  def self.average_goals_per_season
+    goals_per_season = Hash.new(0)
+    all_games.each do |game|
+      goals_per_season[game.season] += game.total_score
+    end
+    goals_per_season.each do |season, total_goals|
+      goals_per_season[season] = (total_goals / count_of_games_by_season[season].to_f).round(2)
     end
   end
 end
