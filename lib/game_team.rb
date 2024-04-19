@@ -107,7 +107,9 @@ class GameTeam
       team_name_to_tackles
     end
     
-    #most_tackles
+    def self.most_tackles(season)
+      tackles_per_team(season).max_by { |team_name, tackles| tackles }.first
+    end
     #fewest_tackles
 
     #most_accurate_team
