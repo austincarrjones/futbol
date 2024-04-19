@@ -42,4 +42,16 @@ class StatTracker
   def winningest_coach(season)
     GameTeam.winningest_coach(season)
   end
+
+  def worst_coach(season)
+    GameTeam.worst_coach(season)
+  end
+
+  def most_tackles(season)
+    GameTeam.most_tackles(season)
+  end
+
+  def fewest_tackles(season)
+    GameTeam.fewest_tackles(season)
+  end
 end
