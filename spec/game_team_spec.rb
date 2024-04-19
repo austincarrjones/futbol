@@ -30,8 +30,8 @@ RSpec.describe GameTeam do
 
   describe "GameTeam Class Methods" do
     before(:all) do
-        # GameTeamFactory.create_game_teams("./fixtures/game_teams_fixture.csv")
-        GameTeamFactory.create_game_teams("./data/game_teams.csv")
+        GameTeamFactory.create_game_teams("./fixtures/game_teams_fixture.csv")
+        # GameTeamFactory.create_game_teams("./data/game_teams.csv")
         #run with real data too
     end
 
@@ -106,7 +106,7 @@ RSpec.describe GameTeam do
       end
     end
 
-    describe "::tackles_per_team" do
+    describe "#tackles_per_team - helper" do
       it "returns the name of the team and the amount of tackles for each - 20132014" do
         expected = {
           "FC Cincinnati" => 299,
@@ -122,7 +122,14 @@ RSpec.describe GameTeam do
     describe "::most_tackles" do
       it "returns the name of the team with the most tackles for specified season" do
         expect(GameTeam.most_tackles("20132014")).to eq("FC Cincinnati")
-        expect(GameTeam.most_tackles("20142015")).to eq("Seattle Sounders FC")
+        expect(GameTeam.most_tackles("20142015")).to eq("Houston Dynamo")
+      end
+    end
+
+    describe "::fewest_tackles" do
+      it "returns the name of the team with the most tackles for specified season" do
+        expect(GameTeam.fewest_tackles("20132014")).to eq("Vancouver Whitecaps FC")
+        expect(GameTeam.fewest_tackles("20142015")).to eq("Sporting Kansas City")
       end
     end
   end
