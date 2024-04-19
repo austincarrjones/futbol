@@ -65,4 +65,21 @@ RSpec.describe StatTracker do
       expect(@stat_tracker.winningest_coach("20142015")).to eq("Alain Vigneault")
     end
   end
+
+  describe "#worst_coach" do
+    it "returns the coach's name with the lowest win percentage for specified season" do
+      expect(@stat_tracker.worst_coach("20132014")).to eq "Peter Laviolette"
+      expect(@stat_tracker.worst_coach("20142015")).to eq("Craig MacTavish").or(eq("Ted Nolan"))
+    end
+  end
+
+  describe "#most_tackles" do
+    expect(@stat_tracker.most_tackles("20132014")).to eq "FC Cincinnati"
+    expect(@stat_tracker.most_tackles("20142015")).to eq "Seattle Sounders FC"
+  end
+
+  describe "#fewest_tackles" do
+    expect(@stat_tracker.fewest_tackles("20132014")).to eq "Atlanta United"
+    expect(@stat_tracker.fewest_tackles("20142015")).to eq "Orlando City SC"
+  end
 end
