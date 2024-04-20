@@ -105,7 +105,21 @@ class GameTeam
       end
       games_per_team
     end
-    # binding.pry
+
+    def self.average_goals_per_game
+      average_gpg = Hash.new(0)
+      all_game_teams.find_all do |game_team|
+        average_gpg[game_team.team_id] = (GameTeam.total_goals_per_team[game_team.team_id].to_f / GameTeam.total_games_per_team[game_team.team_id]).round(2)
+      end
+      average_gpg
+    end
+    
+    def self.best_offense
+      team = self.average_goals_per_game.max_by { |key, value| value }[0]
+      #need to translate team_id to team_name
+      team
+      binding.pry
+    end
 
     #worst offense
 
