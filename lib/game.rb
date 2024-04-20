@@ -95,9 +95,10 @@ class Game
   end
 
   def self.average_goals_per_game
-    all_games.sum do |game|
-      game.total_score
-    end / game_count.round(2)
+    average_goals = all_games.sum do |game|
+      game.total_score.to_f
+    end / game_count
+    average_goals.round(2)
   end
 
   def self.average_goals_per_season
