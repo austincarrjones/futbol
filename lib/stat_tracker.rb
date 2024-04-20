@@ -71,6 +71,10 @@ class StatTracker
     GameTeam.most_accurate_team(season)
   end
 
+  def least_accurate_team(season)
+    GameTeam.least_accurate_team(season)
+  end
+
   def most_tackles(season)
     GameTeam.most_tackles(season)
   end
