@@ -212,6 +212,33 @@ RSpec.describe GameTeam do
       end
     end
 
+    describe "::team_id_to_team_name - helper" do
+      it "changes keys from team_id to team_name - 20132014" do
+        expected = {
+          "FC Cincinnati"=>2.88, 
+          "Orlando City SC"=>3.5, 
+          "Real Salt Lake"=>3.23, 
+          "Vancouver Whitecaps FC"=>3.33
+        }
+
+        expect(GameTeam.team_id_to_team_name("20132014")).to eq(expected)
+      end
+
+      it "changes keys from team_id to team_name - 20142015" do
+        expected = {
+          "DC United"=>3.0, 
+          "Houston Dynamo"=>3.13, 
+          "New York City FC"=>4.7, 
+          "New York Red Bulls"=>5.4, 
+          "Orlando City SC"=>2.91, 
+          "Philadelphia Union"=>3.7, 
+          "Sporting Kansas City"=>5.0
+        }
+
+        expect(GameTeam.team_id_to_team_name("20142015")).to eq(expected)
+      end
+    end
+
     # describe "::most_accurate_team" do
     #   it "returns the name of the team with the best ratio of shots to goals for specified season" do
     #     expect(GameTeam.most_accurate_team("20132014")).to eq("Real Salt Lake")
