@@ -139,7 +139,9 @@ class GameTeam
       team_id_to_team_name(season).min_by { |team_name, ratio| ratio }.first
     end
 
-    #least_accurate_team
+    def self.least_accurate_team(season)
+      team_id_to_team_name(season).max_by { |team_name, ratio| ratio }.first
+    end
 
     def self.tackles_per_team(season)
       team_name_to_tackles = Hash.new(0)
