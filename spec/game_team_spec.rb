@@ -239,11 +239,11 @@ RSpec.describe GameTeam do
       end
     end
 
-    # describe "::most_accurate_team" do
-    #   it "returns the name of the team with the best ratio of shots to goals for specified season" do
-    #     expect(GameTeam.most_accurate_team("20132014")).to eq("Real Salt Lake")
-    #     expect(GameTeam.most_accurate_team("20142015")).to eq("Toronto FC")
-    #   end
-    # end
+    describe "::most_accurate_team" do
+      it "returns the name of the team with the best ratio of shots to goals for specified season" do
+        expect(GameTeam.most_accurate_team("20132014")).to eq("FC Cincinnati")
+        expect(GameTeam.most_accurate_team("20142015")).to eq("Orlando City SC")
+      end
+    end
   end
 end
