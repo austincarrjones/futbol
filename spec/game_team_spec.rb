@@ -133,7 +133,7 @@ RSpec.describe GameTeam do
       end
     end
 
-    describe "::team_id_and_shots" do
+    describe "::team_id_and_shots - helper" do
       it "returns a hash containing team id pointing to amount of shots for 20132014 season" do
         expected = {
           30=>56, 
@@ -141,7 +141,7 @@ RSpec.describe GameTeam do
           26=>49, 
           24=>42
         }
-        
+
         expect(GameTeam.team_id_and_shots("20132014")).to eq(expected)
       end
 
@@ -157,6 +157,33 @@ RSpec.describe GameTeam do
         }
 
         expect(GameTeam.team_id_and_shots("20142015")).to eq(expected)
+      end
+    end
+
+    describe "::team_id_and_goals - helper" do
+      it "returns a hash containing team id pointing to amount of goals for 20132014 season" do
+        expected = {
+          30=>16, 
+          21=>12, 
+          26=>17, 
+          24=>13
+        }
+
+        expect(GameTeam.team_id_and_goals("20132014")).to eq(expected)
+      end
+
+      it "returns a hash containg team id pointing to amount of goals for 20142015 season" do
+        expected = {
+          5=>5, 
+          3=>24, 
+          14=>17, 
+          30=>11, 
+          19=>10, 
+          9=>10, 
+          8=>10
+        }
+
+        expect(GameTeam.team_id_and_goals("20142015")).to eq(expected)
       end
     end
   end
