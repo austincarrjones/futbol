@@ -98,6 +98,15 @@ class GameTeam
       goals_per_team
     end
 
+    def self.total_games_per_team
+      games_per_team = Hash.new(0)
+      all_game_teams.find_all do |game_team|
+        games_per_team[game_team.team_id] += 1
+      end
+      games_per_team
+    end
+    # binding.pry
+
     #worst offense
 
     def self.tackles_per_team(season)

@@ -133,10 +133,17 @@ RSpec.describe GameTeam do
       end
     end
 
-    describe "#best_offense" do
-      it 'can show total_goals_per_team' do
+    describe "#total_goals_per_team - helper" do
+      it 'return hash of total goals per team' do
         expect(GameTeam.total_goals_per_team).to eq({5=>5, 3=>24, 14=>17, 0=>0, 30=>27, 21=>12, 19=>10, 9=>10, 8=>10, 26=>17, 24=>13})
       end
     end
+
+    describe "#total_games_per_team - helper" do
+      it 'return hash of total games per team' do
+        expect(GameTeam.total_games_per_team).to eq({5=>4, 3=>11, 14=>7, 0=>4, 30=>13, 21=>7, 19=>6, 9=>6, 8=>6, 26=>7, 24=>7})
+      end
+    end
+    
   end
 end
