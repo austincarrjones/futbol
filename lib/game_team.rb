@@ -22,8 +22,8 @@ class GameTeam
         @result = gameteam_data[:result]
         @settled_in = gameteam_data[:settled_in]
         @head_coach = gameteam_data[:head_coach]
-        @goals = gameteam_data[:goals]
-        @shots = gameteam_data[:shots]
+        @goals = gameteam_data[:goals].to_i
+        @shots = gameteam_data[:shots].to_i
         @tackles = gameteam_data[:tackles].to_i
         @pim = gameteam_data[:pim]
         @ppo = gameteam_data[:ppo]
@@ -89,6 +89,23 @@ class GameTeam
       coach_win_percentage.min_by { |coach, percent| percent }.first
     end
 
+    def self.team_id_and_shots(season)
+      team_id_shots = Hash.new(0)
+
+      all_game_teams.each do |game_team|
+        if season[0..3] == game_team.game_id[0..3]
+          team_id_shots[game_team.team_id] += game_team.shots
+        end
+      end
+      team_id_shots
+    end
+
+    
+
+    #most_accurate_team
+
+    #least_accurate_team
+
     #best_offense
 
     #worst offense
@@ -115,8 +132,4 @@ class GameTeam
     def self.fewest_tackles(season)
       tackles_per_team(season).min_by { |team_name, tackles| tackles }.first
     end
-
-    #most_accurate_team
-
-    #least_accurate_team
-end
+  end
