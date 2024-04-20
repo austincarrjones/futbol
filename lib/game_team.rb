@@ -23,7 +23,7 @@ class GameTeam
         @settled_in = gameteam_data[:settled_in]
         @head_coach = gameteam_data[:head_coach]
         @goals = gameteam_data[:goals].to_i
-        @shots = gameteam_data[:shots]
+        @shots = gameteam_data[:shots].to_i
         @tackles = gameteam_data[:tackles].to_i
         @pim = gameteam_data[:pim]
         @ppo = gameteam_data[:ppo]
@@ -87,6 +87,60 @@ class GameTeam
         coach_win_percentage
       end
       coach_win_percentage.min_by { |coach, percent| percent }.first
+    end
+
+    def self.team_id_and_shots(season)
+      team_id_shots = Hash.new(0)
+
+      all_game_teams.each do |game_team|
+        if season[0..3] == game_team.game_id[0..3]
+          team_id_shots[game_team.team_id] += game_team.shots
+        end
+      end
+      team_id_shots
+    end
+
+    def self.team_id_and_goals(season)
+      team_id_goals = Hash.new(0)
+
+      all_game_teams.each do |game_team|
+        if season[0..3] == game_team.game_id[0..3]
+          team_id_goals[game_team.team_id] += game_team.goals
+        end
+      end
+      team_id_goals
+    end
+
+    def self.team_id_shots_goals_ratio(season)
+      shots_divided_by_goals = []
+      results = {}
+      
+      team_id_and_shots(season).values.each_with_index do |shots, index|
+        shots_divided_by_goals << (shots.to_f / team_id_and_goals(season).values[index]).round(2)
+      end
+      results = team_id_and_shots(season).keys.zip(shots_divided_by_goals).to_h
+    end
+
+    def self.team_id_to_team_name(season)
+      teams = TeamFactory.create_teams("./data/teams.csv")
+      team_name_to_ratio = Hash.new(0)
+
+      team_id_shots_goals_ratio(season).each do |team_id, ratio|
+        teams.each do |team|
+          if team_id == team.team_id
+            team_name_to_ratio[team.team_name] = ratio
+          end
+        end
+      end
+      team_name_to_ratio
+    end
+
+    def self.most_accurate_team(season)
+      team_id_to_team_name(season).min_by { |team_name, ratio| ratio }.first
+    end
+
+    def self.least_accurate_team(season)
+      team_id_to_team_name(season).max_by { |team_name, ratio| ratio }.first
     end
 
     def self.total_goals_per_team
@@ -158,8 +212,4 @@ class GameTeam
     def self.fewest_tackles(season)
       tackles_per_team(season).min_by { |team_name, tackles| tackles }.first
     end
-
-    #most_accurate_team
-
-    #least_accurate_team
-end
+  end
