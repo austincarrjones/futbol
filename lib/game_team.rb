@@ -121,6 +121,20 @@ class GameTeam
       results = team_id_and_shots(season).keys.zip(shots_divided_by_goals).to_h
     end
 
+    def self.team_id_to_team_name(season)
+      teams = TeamFactory.create_teams("./data/teams.csv")
+      team_name_to_ratio = Hash.new(0)
+
+      team_id_shots_goals_ratio(season).each do |team_id, ratio|
+        teams.each do |team|
+          if team_id == team.team_id
+            team_name_to_ratio[team.team_name] = ratio
+          end
+        end
+      end
+      team_name_to_ratio
+    end
+    
     #most_accurate_team
 
     #least_accurate_team
