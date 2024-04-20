@@ -128,6 +128,13 @@ RSpec.describe StatTracker do
     end
   end
 
+  describe "#least_accurate_team" do
+    it "returns the name of the team with the worst ratio of shots to goals for specified season" do
+      expect(@stat_tracker.least_accurate_team("20132014")).to eq("New York City FC")
+      expect(@stat_tracker.least_accurate_team("20142015")).to eq("Columbus Crew SC")
+    end
+  end
+
   describe "#most_tackles" do
     it "returns the team name with the most tackles for a specified season" do
       expect(@stat_tracker.most_tackles("20132014")).to eq "FC Cincinnati"
