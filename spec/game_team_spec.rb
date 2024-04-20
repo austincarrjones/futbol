@@ -43,7 +43,7 @@ RSpec.describe GameTeam do
       end
     end
 
-    describe "#coach_game_count - helper" do
+    describe "::coach_game_count - helper" do
       it "returns a Hash of the number of games a coach played for a specified season" do
         expected = {
           "Bruce Boudreau" => 7,
@@ -68,7 +68,7 @@ RSpec.describe GameTeam do
       end
     end
 
-    describe "#coach_win_count - helper" do
+    describe "::coach_win_count - helper" do
       it "returns a Hash of the number of games a coach won for a specified season" do
         expected = {
           "Bruce Boudreau" => 2,
@@ -106,7 +106,7 @@ RSpec.describe GameTeam do
       end
     end
 
-    describe "#tackles_per_team - helper" do
+    describe "::tackles_per_team - helper" do
       it "returns the name of the team and the amount of tackles for each - 20132014" do
         expected = {
           "FC Cincinnati" => 299,
@@ -130,6 +130,33 @@ RSpec.describe GameTeam do
       it "returns the name of the team with the most tackles for specified season" do
         expect(GameTeam.fewest_tackles("20132014")).to eq("Vancouver Whitecaps FC")
         expect(GameTeam.fewest_tackles("20142015")).to eq("Sporting Kansas City")
+      end
+    end
+
+    describe "::team_id_and_shots" do
+      it "returns a hash containing team id pointing to amount of shots for 20132014 season" do
+        expected = {
+          30=>56, 
+          21=>40, 
+          26=>49, 
+          24=>42
+        }
+        
+        expect(GameTeam.team_id_and_shots("20132014")).to eq(expected)
+      end
+
+      it "returns a hash containing team id pointing to amount of shots for 20142015 season" do
+        expected = {
+          5=>25, 
+          3=>75, 
+          14=>51, 
+          30=>32, 
+          19=>37, 
+          9=>47, 
+          8=>54
+        }
+
+        expect(GameTeam.team_id_and_shots("20142015")).to eq(expected)
       end
     end
   end
