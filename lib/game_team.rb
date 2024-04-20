@@ -22,7 +22,7 @@ class GameTeam
         @result = gameteam_data[:result]
         @settled_in = gameteam_data[:settled_in]
         @head_coach = gameteam_data[:head_coach]
-        @goals = gameteam_data[:goals]
+        @goals = gameteam_data[:goals].to_i
         @shots = gameteam_data[:shots]
         @tackles = gameteam_data[:tackles].to_i
         @pim = gameteam_data[:pim]
@@ -90,6 +90,13 @@ class GameTeam
     end
 
     #best_offense
+    def self.total_goals_per_team
+      goals_per_team = Hash.new(0)
+      all_game_teams.each do |game_team|
+        goals_per_team[game_team.team_id] += game_team.goals
+      end
+      goals_per_team
+    end
 
     #worst offense
 

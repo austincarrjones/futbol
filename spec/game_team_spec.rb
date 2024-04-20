@@ -132,5 +132,11 @@ RSpec.describe GameTeam do
         expect(GameTeam.fewest_tackles("20142015")).to eq("Sporting Kansas City")
       end
     end
+
+    describe "#best_offense" do
+      it 'can show total_goals_per_team' do
+        expect(GameTeam.total_goals_per_team).to eq({5=>5, 3=>24, 14=>17, 0=>0, 30=>27, 21=>12, 19=>10, 9=>10, 8=>10, 26=>17, 24=>13})
+      end
+    end
   end
 end
