@@ -217,11 +217,22 @@ RSpec.describe Game do
   end
 
   describe '#highest_scoring_visitor' do
-    it 'can name the team with the highest average score per game when they are away' do
+    it 'can name the awat team with the highest average score per game' do
       GameFactory.new
       GameFactory.create_games("./fixtures/games_fixture.csv")
       
       expect(Game.highest_scoring_visitor).to eq "FC Dallas"
+
+      GameFactory.reset_games
+    end
+  end
+
+  describe '#lowest_scoring_visitor' do
+    it 'can name the away team with the lowest average score per game' do
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
+      
+      expect(Game.lowest_scoring_visitor).to eq "Sporting Kansas City"
 
       GameFactory.reset_games
     end

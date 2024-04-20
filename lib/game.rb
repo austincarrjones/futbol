@@ -147,4 +147,16 @@ class Game
     team_name_highest
   end
 
+  def self.lowest_scoring_visitor
+    team_id_lowest = self.away_avg_goals_per_team.min_by { |key, value| value }[0]
+    team_name_lowest = nil
+    teams = TeamFactory.create_teams("./data/teams.csv")
+    Team.all_teams.each do |team_object|
+      if team_object.team_id == team_id_lowest
+        team_name_lowest = team_object.team_name
+      end
+    end
+    team_name_lowest
+  end
+
 end
