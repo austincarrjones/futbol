@@ -37,7 +37,7 @@
 [Linkedin](https://www.linkedin.com/in/zachery-bergman-4a5801184/)
 
 ## Retro
-[linkto our Miro Board](https://miro.com/app/board/uXjVKRpaWH4=/#tpicker-content)
+[link to our Miro Board](https://miro.com/app/board/uXjVKRpaWH4=/#tpicker-content)
 
 ### What has gone well
 - Staying on the same call even while working async, so if anyone gets stuck on something, the other people are there to chime in.
