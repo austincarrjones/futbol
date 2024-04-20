@@ -134,14 +134,12 @@ class GameTeam
       end
       team_name_to_ratio
     end
-    
-    #most_accurate_team
+
+    def self.most_accurate_team(season)
+      team_id_to_team_name(season).min_by { |team_name, ratio| ratio }.first
+    end
 
     #least_accurate_team
-
-    #best_offense
-
-    #worst offense
 
     def self.tackles_per_team(season)
       team_name_to_tackles = Hash.new(0)
