@@ -111,7 +111,15 @@ class GameTeam
       team_id_goals
     end
 
-    
+    def self.team_id_shots_goals_ratio(season)
+      shots_divided_by_goals = []
+      results = {}
+      
+      team_id_and_shots(season).values.each_with_index do |shots, index|
+        shots_divided_by_goals << (shots.to_f / team_id_and_goals(season).values[index]).round(2)
+      end
+      results = team_id_and_shots(season).keys.zip(shots_divided_by_goals).to_h
+    end
 
     #most_accurate_team
 
