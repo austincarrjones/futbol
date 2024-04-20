@@ -110,4 +110,12 @@ class Game
       goals_per_season[season] = (total_goals / count_of_games_by_season[season].to_f).round(2)
     end
   end
+
+  def self.away_goals_per_team
+    away_goals = Hash.new(0)
+    all_games.each do |game|
+      away_goals[game.away_team_id] += game.away_goals
+    end
+    away_goals
+  end
 end

@@ -182,4 +182,26 @@ RSpec.describe Game do
       GameFactory.reset_games
     end
   end
+
+  describe '#away_goals_per_team' do
+    it 'returns hash of teams and total away game goals' do
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
+      
+      expect(Game.away_goals_per_team).to eq({3=>5, 6=>12, 5=>1, 17=>5, 16=>3, 9=>3, 8=>3})
+      
+      GameFactory.reset_games
+    end
+  end
+
+  describe '#highest_scoring_visitor' do
+    xit 'can name the team with the highest average score per game when they are away' do
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
+      
+      expect(Game.highest_scoring_visitor).to eq "placeholder team"
+
+      GameFactory.reset_games
+    end
+  end
 end
