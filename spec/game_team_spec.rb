@@ -186,5 +186,37 @@ RSpec.describe GameTeam do
         expect(GameTeam.team_id_and_goals("20142015")).to eq(expected)
       end
     end
+
+    describe "::team_id_shots_goals_ratio - helper" do
+      it "divides teams shots by goals, creates new hash with team_id pointing to ratio - 20132014" do
+        expected = {
+          30 => 3.5,
+          21 => 3.33,
+          26 => 2.88,
+          24 => 3.23
+        }
+        expect(GameTeam.team_id_shots_goals_ratio("20132014")).to eq(expected)
+      end
+
+      it "divides teams shots by goals, creates new hash with team_id pointing to ratio - 20142015" do
+        expected = {
+          14 => 3.0,
+          19 => 3.7,
+          3 => 3.13,
+          30 => 2.91,
+          5 => 5.0,
+          8 => 5.4,
+          9 => 4.7
+        }
+        expect(GameTeam.team_id_shots_goals_ratio("20142015")).to eq(expected)
+      end
+    end
+
+    # describe "::most_accurate_team" do
+    #   it "returns the name of the team with the best ratio of shots to goals for specified season" do
+    #     expect(GameTeam.most_accurate_team("20132014")).to eq("Real Salt Lake")
+    #     expect(GameTeam.most_accurate_team("20142015")).to eq("Toronto FC")
+    #   end
+    # end
   end
 end
