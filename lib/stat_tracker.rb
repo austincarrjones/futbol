@@ -74,4 +74,8 @@ class StatTracker
   def fewest_tackles(season)
     GameTeam.fewest_tackles(season)
   end
+
+  def best_offense
+    GameTeam.best_offense
+  end
 end

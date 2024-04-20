@@ -22,7 +22,7 @@ class GameTeam
         @result = gameteam_data[:result]
         @settled_in = gameteam_data[:settled_in]
         @head_coach = gameteam_data[:head_coach]
-        @goals = gameteam_data[:goals]
+        @goals = gameteam_data[:goals].to_i
         @shots = gameteam_data[:shots]
         @tackles = gameteam_data[:tackles].to_i
         @pim = gameteam_data[:pim]
@@ -89,9 +89,52 @@ class GameTeam
       coach_win_percentage.min_by { |coach, percent| percent }.first
     end
 
-    #best_offense
+    def self.total_goals_per_team
+      goals_per_team = Hash.new(0)
+      all_game_teams.each do |game_team|
+        goals_per_team[game_team.team_id] += game_team.goals
+      end
+      goals_per_team
+    end
 
-    #worst offense
+    def self.total_games_per_team
+      games_per_team = Hash.new(0)
+      all_game_teams.find_all do |game_team|
+        games_per_team[game_team.team_id] += 1
+      end
+      games_per_team
+    end
+
+    def self.average_goals_per_game
+      average_gpg = Hash.new(0)
+      all_game_teams.find_all do |game_team|
+        average_gpg[game_team.team_id] = (GameTeam.total_goals_per_team[game_team.team_id].to_f / GameTeam.total_games_per_team[game_team.team_id]).round(2)
+      end
+      average_gpg.delete(0)
+      average_gpg
+    end
+    
+    def self.best_offense
+      team_id_best = self.average_goals_per_game.max_by { |key, value| value }[0]
+      team_name_best = nil
+      Team.all_teams.each do |team_object|
+        if team_object.team_id == team_id_best
+          team_name_best = team_object.team_name
+        end
+      end
+      team_name_best
+    end
+    
+    def self.worst_offense
+      team_id_worst = self.average_goals_per_game.min_by { |key, value| value }[0]
+      team_name_worst = nil
+      Team.all_teams.each do |team_object|
+        if team_object.team_id == team_id_worst
+          team_name_worst = team_object.team_name
+        end
+      end
+      team_name_worst
+    end
 
     def self.tackles_per_team(season)
       team_name_to_tackles = Hash.new(0)
