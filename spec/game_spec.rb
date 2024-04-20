@@ -205,12 +205,12 @@ RSpec.describe Game do
     end
   end
   
-  describe '#away_average_goals_per_team' do
+  describe '#away_avg_goals_per_team' do
     it 'returns hash of teams and average away game goals' do
       GameFactory.new
       GameFactory.create_games("./fixtures/games_fixture.csv")
       
-      expect(Game.away_average_goals_per_team).to eq({3=>1.67, 6=>3.0, 5=>0.5, 17=>1.25, 16=>1.0, 9=>1.5, 8=>1.5})
+      expect(Game.away_avg_goals_per_team).to eq({3=>1.67, 6=>3.0, 5=>0.5, 17=>1.25, 16=>1.0, 9=>1.5, 8=>1.5})
       
       GameFactory.reset_games
     end
@@ -221,7 +221,7 @@ RSpec.describe Game do
       GameFactory.new
       GameFactory.create_games("./fixtures/games_fixture.csv")
       
-      expect(Game.highest_scoring_visitor).to eq "placeholder team"
+      expect(Game.highest_scoring_visitor).to eq "FC Dallas"
 
       GameFactory.reset_games
     end

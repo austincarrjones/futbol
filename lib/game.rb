@@ -127,17 +127,24 @@ class Game
     away_games
   end
   
-  def self.away_average_goals_per_team
+  def self.away_avg_goals_per_team
     avg_away_gpg = Hash.new(0)
     self.away_goals_per_team.each do |team, goals|
       avg_away_gpg[team] = (goals.to_f / Game.away_games_per_team[team]).round(2)
     end
-    binding.pry
     avg_away_gpg
   end
-
+  
   def self.highest_scoring_visitor
-
+    team_id_highest = self.away_avg_goals_per_team.max_by { |key, value| value }[0]
+    team_name_highest = nil
+    teams = TeamFactory.create_teams("./data/teams.csv")
+    Team.all_teams.each do |team_object|
+      if team_object.team_id == team_id_highest
+        team_name_highest = team_object.team_name
+      end
+    end
+    team_name_highest
   end
 
 end
