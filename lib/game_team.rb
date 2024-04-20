@@ -89,7 +89,6 @@ class GameTeam
       coach_win_percentage.min_by { |coach, percent| percent }.first
     end
 
-    #best_offense
     def self.total_goals_per_team
       goals_per_team = Hash.new(0)
       all_game_teams.each do |game_team|
@@ -117,8 +116,13 @@ class GameTeam
     def self.best_offense
       team = self.average_goals_per_game.max_by { |key, value| value }[0]
       #need to translate team_id to team_name
-      team
-      binding.pry
+      team_name = nil
+      Team.all_teams.each do |team_object|
+        if team_object.team_id == team
+          team_name = team_object.team_name
+        end
+      end
+      team_name
     end
 
     #worst offense

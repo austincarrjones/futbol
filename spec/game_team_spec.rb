@@ -153,7 +153,7 @@ RSpec.describe GameTeam do
 
     describe "#best_offense" do
       it "returns team with the highest goals per game" do
-        expect(GameTeam.best_offense).to eq({})
+        expect(GameTeam.best_offense).to eq("DC United")
       end
     end
 
