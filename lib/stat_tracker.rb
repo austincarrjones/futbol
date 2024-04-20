@@ -39,7 +39,39 @@ class StatTracker
     Game.percentage_away_wins
   end
 
+  def percentage_ties
+    Game.percentage_ties
+  end
+
+  def count_of_games_by_season
+    Game.count_of_games_by_season
+  end
+
+  def average_goals_per_game
+    Game.average_goals_per_game
+  end
+
+  def average_goals_by_season
+    Game.average_goals_per_season
+  end
+
+  def count_of_teams
+    Team.count_of_teams
+  end
+
   def winningest_coach(season)
     GameTeam.winningest_coach(season)
+  end
+
+  def worst_coach(season)
+    GameTeam.worst_coach(season)
+  end
+
+  def most_tackles(season)
+    GameTeam.most_tackles(season)
+  end
+
+  def fewest_tackles(season)
+    GameTeam.fewest_tackles(season)
   end
 end

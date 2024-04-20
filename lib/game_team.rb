@@ -17,14 +17,14 @@ class GameTeam
 
     def initialize(gameteam_data)
         @game_id = gameteam_data[:game_id].to_s
-        @team_id = gameteam_data[:team_id].to_s
+        @team_id = gameteam_data[:team_id].to_i
         @hoa = gameteam_data[:hoa]
         @result = gameteam_data[:result]
         @settled_in = gameteam_data[:settled_in]
         @head_coach = gameteam_data[:head_coach]
         @goals = gameteam_data[:goals]
         @shots = gameteam_data[:shots]
-        @tackles = gameteam_data[:tackles]
+        @tackles = gameteam_data[:tackles].to_i
         @pim = gameteam_data[:pim]
         @ppo = gameteam_data[:ppo]
         @ppg = gameteam_data[:ppg]
@@ -93,9 +93,28 @@ class GameTeam
 
     #worst offense
 
-    #most_tackles
+    def self.tackles_per_team(season)
+      team_name_to_tackles = Hash.new(0)
+      teams = TeamFactory.create_teams("./data/teams.csv")
+      
+      all_game_teams.each do |game_team|
+        teams.each do |team|
+          if season[0..3] == game_team.game_id[0..3] && team.team_id == game_team.team_id
+            team_name_to_tackles[team.team_name] += game_team.tackles
+          end
+        end
+      end
+      team_name_to_tackles
+    end
+    
+    def self.most_tackles(season)
+      tackles_per_team(season).max_by { |team_name, tackles| tackles }.first
+    end
+    
 
-    #fewest_tackles
+    def self.fewest_tackles(season)
+      tackles_per_team(season).min_by { |team_name, tackles| tackles }.first
+    end
 
     #most_accurate_team
 
