@@ -100,6 +100,17 @@ class GameTeam
       team_id_shots
     end
 
+    def self.team_id_and_goals(season)
+      team_id_goals = Hash.new(0)
+
+      all_game_teams.each do |game_team|
+        if season[0..3] == game_team.game_id[0..3]
+          team_id_goals[game_team.team_id] += game_team.goals
+        end
+      end
+      team_id_goals
+    end
+
     
 
     #most_accurate_team
