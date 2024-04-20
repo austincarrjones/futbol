@@ -110,22 +110,31 @@ class GameTeam
       all_game_teams.find_all do |game_team|
         average_gpg[game_team.team_id] = (GameTeam.total_goals_per_team[game_team.team_id].to_f / GameTeam.total_games_per_team[game_team.team_id]).round(2)
       end
+      average_gpg.delete(0)
       average_gpg
     end
     
     def self.best_offense
-      team = self.average_goals_per_game.max_by { |key, value| value }[0]
-      #need to translate team_id to team_name
-      team_name = nil
+      team_id_best = self.average_goals_per_game.max_by { |key, value| value }[0]
+      team_name_best = nil
       Team.all_teams.each do |team_object|
-        if team_object.team_id == team
-          team_name = team_object.team_name
+        if team_object.team_id == team_id_best
+          team_name_best = team_object.team_name
         end
       end
-      team_name
+      team_name_best
     end
-
-    #worst offense
+    
+    def self.worst_offense
+      team_id_worst = self.average_goals_per_game.min_by { |key, value| value }[0]
+      team_name_worst = nil
+      Team.all_teams.each do |team_object|
+        if team_object.team_id == team_id_worst
+          team_name_worst = team_object.team_name
+        end
+      end
+      team_name_worst
+    end
 
     def self.tackles_per_team(season)
       team_name_to_tackles = Hash.new(0)

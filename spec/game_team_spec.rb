@@ -147,13 +147,19 @@ RSpec.describe GameTeam do
 
     describe "#average_goals_per_game - helper" do
       it "returns hash of teams and their average goals per game" do
-        expect(GameTeam.average_goals_per_game).to eq({5=>1.25, 3=>2.18, 14=>2.43, 0=>0.0, 30=>2.08, 21=>1.71, 19=>1.67, 9=>1.67, 8=>1.67, 26=>2.43, 24=>1.86})
+        expect(GameTeam.average_goals_per_game).to eq({5=>1.25, 3=>2.18, 14=>2.43, 30=>2.08, 21=>1.71, 19=>1.67, 9=>1.67, 8=>1.67, 26=>2.43, 24=>1.86})
       end
     end
 
     describe "#best_offense" do
       it "returns team with the highest goals per game" do
         expect(GameTeam.best_offense).to eq("DC United")
+      end
+    end
+
+    describe "#worst_offense" do
+      it "returns team with the lowest goals per game" do
+        expect(GameTeam.worst_offense).to eq("Sporting Kansas City")
       end
     end
 
