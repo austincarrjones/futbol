@@ -118,4 +118,26 @@ class Game
     end
     away_goals
   end
+
+  def self.away_games_per_team
+    away_games = Hash.new(0)
+    all_games.each do |game|
+      away_games[game.away_team_id] += 1
+    end
+    away_games
+  end
+  
+  def self.away_average_goals_per_team
+    avg_away_gpg = Hash.new(0)
+    self.away_goals_per_team.each do |team, goals|
+      avg_away_gpg[team] = (goals.to_f / Game.away_games_per_team[team]).round(2)
+    end
+    binding.pry
+    avg_away_gpg
+  end
+
+  def self.highest_scoring_visitor
+
+  end
+
 end
