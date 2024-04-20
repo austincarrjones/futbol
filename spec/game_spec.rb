@@ -164,7 +164,7 @@ RSpec.describe Game do
       GameFactory.new
       GameFactory.create_games("./fixtures/games_fixture.csv")
 
-      expect(Game.average_goals_per_game).to eq(3)
+      expect(Game.average_goals_per_game).to eq(3.75)
 
       GameFactory.reset_games
     end
