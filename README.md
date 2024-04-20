@@ -36,4 +36,17 @@
 [Github](https://github.com/zach-bergman)
 [Linkedin](https://www.linkedin.com/in/zachery-bergman-4a5801184/)
 
+## Retro
+[linkto our Miro Board](https://miro.com/app/board/uXjVKRpaWH4=/#tpicker-content)
+
+### What has gone well
+- Staying on the same call even while working async, so if anyone gets stuck on something, the other people are there to chime in.
+- Assigning tasks on our google sheets document helped me know what I can be working on.
+- GIT workflow has been strong and we have been keeping up with pull requests really well.
+
+### What we would do differently in the future
+- Create mini deadlines for when we want to get things done.
+- We could do a better job at testing, in this case testing against the spec harness before pushing to main.
+- We could have done a better job at dividing up the work load. The way we originally divided tasks up, some people had more work than others.
+
 
