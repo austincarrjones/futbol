@@ -245,5 +245,12 @@ RSpec.describe GameTeam do
         expect(GameTeam.most_accurate_team("20142015")).to eq("Orlando City SC")
       end
     end
+
+    describe "::least_accurate_team" do
+      it "returns the name of the team with the worst ratio of shots to goals for specified season" do
+        expect(GameTeam.least_accurate_team("20132014")).to eq("Orlando City SC") # Houston Dash has same ratio as NYC FC - 3.79
+        expect(GameTeam.least_accurate_team("20142015")).to eq("New York Red Bulls")
+      end
+    end
   end
 end
