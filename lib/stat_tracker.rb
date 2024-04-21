@@ -94,8 +94,16 @@ class StatTracker
   def highest_scoring_visitor
     Game.highest_scoring_visitor
   end
+
+  def highest_scoring_home_team
+    Game.highest_scoring_home_team
+  end
   
   def lowest_scoring_visitor
     Game.lowest_scoring_visitor
+  end
+
+  def lowest_scoring_home_team
+    Game.lowest_scoring_home_team
   end
 end
