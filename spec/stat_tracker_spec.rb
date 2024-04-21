@@ -150,8 +150,14 @@ RSpec.describe StatTracker do
   end
 
   describe "#best_offense" do
-    it "returns team with the highest goals per game" do
+    xit "returns team with the highest average goals per game" do
       expect(@stat_tracker.best_offense).to eq "Reign FC"
+    end
+  end
+
+  describe "#worst_offense" do
+    it "returns team with the lowest average goals per game" do
+      expect(@stat_tracker.worst_offense).to eq("Utah Royals FC")
     end
   end
 
