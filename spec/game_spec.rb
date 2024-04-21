@@ -182,4 +182,55 @@ RSpec.describe Game do
       GameFactory.reset_games
     end
   end
+
+  describe '#away_goals_per_team' do
+    it 'returns hash of teams and total away game goals' do
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
+      
+      expect(Game.away_goals_per_team).to eq({3=>5, 6=>12, 5=>1, 17=>5, 16=>3, 9=>3, 8=>3})
+      GameFactory.reset_games
+    end
+  end
+
+  describe '#away_games_per_team' do
+    it 'returns hash of teams and total away games' do
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
+      
+      expect(Game.away_games_per_team).to eq({3=>3, 6=>4, 5=>2, 17=>4, 16=>3, 9=>2, 8=>2})
+      GameFactory.reset_games
+    end
+  end
+  
+  describe '#away_avg_goals_per_team' do
+    it 'returns hash of teams and average away game goals' do
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
+      
+      expect(Game.away_avg_goals_per_team).to eq({3=>1.67, 6=>3.0, 5=>0.5, 17=>1.25, 16=>1.0, 9=>1.5, 8=>1.5})
+      GameFactory.reset_games
+    end
+  end
+
+  describe '#highest_scoring_visitor' do
+    it 'can name the awat team with the highest average score per game' do
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
+      
+      expect(Game.highest_scoring_visitor).to eq "FC Dallas"
+      GameFactory.reset_games
+    end
+  end
+
+  describe '#lowest_scoring_visitor' do
+    it 'can name the away team with the lowest average score per game' do
+      GameFactory.new
+      GameFactory.create_games("./fixtures/games_fixture.csv")
+      
+      expect(Game.lowest_scoring_visitor).to eq "Sporting Kansas City"
+      GameFactory.reset_games
+    end
+  end
+
 end
