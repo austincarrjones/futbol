@@ -167,4 +167,9 @@ RSpec.describe StatTracker do
     end
   end
 
+  describe "#lowest_scoring_visitor" do
+    it "returns the team with the lowest average scores per game when away" do
+      expect(@stat_tracker.lowest_scoring_visitor).to eq("San Jose Earthquakes)
+    end
+  end
 end
