@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe TeamFactory do
+RSpec.describe Team do
 
   it 'exists' do
     team = Team.new({team_id: 1, team_name: "Atlanta United"})
