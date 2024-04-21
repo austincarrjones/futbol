@@ -94,4 +94,8 @@ class StatTracker
   def highest_scoring_visitor
     Game.highest_scoring_visitor
   end
+  
+  def lowest_scoring_visitor
+    Game.lowest_scoring_visitor
+  end
 end
