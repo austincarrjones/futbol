@@ -159,4 +159,51 @@ class Game
     team_name_lowest
   end
 
+  def self.home_goals_per_team
+    home_goals = Hash.new(0)
+    all_games.each do |game|
+      home_goals[game.home_team_id] += game.home_goals
+    end
+    home_goals
+  end
+
+  def self.home_games_per_team
+    home_games = Hash.new(0)
+    all_games.each do |game|
+      home_games[game.home_team_id] += 1
+    end
+    home_games
+  end
+  
+  def self.home_avg_goals_per_team
+    avg_home_gpg = Hash.new(0)
+    self.home_goals_per_team.each do |team, goals|
+      avg_home_gpg[team] = (goals.to_f / Game.home_games_per_team[team]).round(2)
+    end
+    avg_home_gpg
+  end
+
+  def self.highest_scoring_home_team
+    team_id_highest = self.home_avg_goals_per_team.max_by { |key, value| value }[0]
+    team_name_highest = nil
+    teams = TeamFactory.create_teams("./data/teams.csv")
+    Team.all_teams.each do |team_object|
+      if team_object.team_id == team_id_highest
+        team_name_highest = team_object.team_name
+      end
+    end
+    team_name_highest
+  end
+
+  def self.lowest_scoring_home_team
+    team_id_lowest = self.home_avg_goals_per_team.min_by { |key, value| value }[0]
+    team_name_lowest = nil
+    teams = TeamFactory.create_teams("./data/teams.csv")
+    Team.all_teams.each do |team_object|
+      if team_object.team_id == team_id_lowest
+        team_name_lowest = team_object.team_name
+      end
+    end
+    team_name_lowest
+  end
 end
