@@ -90,4 +90,8 @@ class StatTracker
   def worst_offense
     GameTeam.worst_offense
   end
+
+  def highest_scoring_visitor
+    Game.highest_scoring_visitor
+  end
 end
