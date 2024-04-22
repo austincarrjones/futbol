@@ -10,6 +10,7 @@
 
 - [github project](https://github.com/users/austincarrjones/projects/2)
 - [Miro Board](https://miro.com/app/board/uXjVKTnYqIg=/)
+- [Google Sheet](https://docs.google.com/spreadsheets/d/1pxbx4dNb8el04168hKaUO-UY403eLS3hP73DuD47D5I/edit#gid=0)
 - We discussed what we did in our pair project, talked about our experiences. we then looked at the project requirements and used a miro board to start thinking about the direction we would take.
 
 ## Code Design
