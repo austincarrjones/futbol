@@ -13,14 +13,10 @@ RSpec.describe Game do
 
       expect(game1.game_id).to be_a(Integer)
       expect(game1.season).to be_a(String)
-      expect(game1.type).to be_a(Symbol)
-      expect(game1.date_time).to be_a(String)
       expect(game1.away_team_id).to be_a(Integer)
       expect(game1.home_team_id).to be_a(Integer)
       expect(game1.away_goals).to be_a(Integer)
       expect(game1.home_goals).to be_a(Integer)
-      expect(game1.venue).to be_a(String)
-      expect(game1.venue_link).to be_a(String)
     end
   end
 

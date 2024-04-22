@@ -12,4 +12,18 @@ RSpec.describe TeamFactory do
     expect(teams).to all be_a(Team)
   end
 
+  it 'can show all teams' do
+    TeamFactory.new
+    teams = TeamFactory.create_teams("./data/teams.csv")
+
+    expect(teams).to eq(TeamFactory.all_teams)
+  end
+
+  it 'can reset the teams class variable' do
+    TeamFactory.new
+    teams = TeamFactory.create_teams("./data/teams.csv")
+    TeamFactory.reset_teams
+
+    expect(TeamFactory.all_teams).to eq([])
+  end
 end
