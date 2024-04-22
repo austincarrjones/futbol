@@ -10,17 +10,10 @@ class GameTeamFactory
         team_id: row[:team_id],
         hoa: row[:hoa],
         result: row[:result],
-        settled_in: row[:settled_in],
         head_coach: row[:head_coach],
         goals: row[:goals],
         shots: row[:shots],
-        tackles: row[:tackles],
-        pim: row[:pim],
-        ppo: row[:powerplayopportunities],
-        ppg: row[:powerplaygoals],
-        faceoff_win_per: row[:faceoffwinpercentage],
-        giveaways: row[:giveaways],
-        takeaways: row[:takeaways]
+        tackles: row[:tackles]
       }
 
       @@game_teams << GameTeam.new(game_team_data)
