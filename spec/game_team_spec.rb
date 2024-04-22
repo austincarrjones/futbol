@@ -9,17 +9,10 @@ RSpec.describe GameTeam do
           team_id: "3",
           hoa: "away",
           result: "LOSS",
-          settled_in: "OT",
           head_coach: "John Tortorella",
           goals: 2,
           shots: 8,
-          tackles: 44,
-          pim: 8,
-          ppo: 3,
-          ppg: 0,
-          faceoff_win_per: 44.8,
-          giveaways: 17,
-          takeaways: 7
+          tackles: 44
         }   
 
           @gameteam_test = GameTeam.new(gameteam_data)
@@ -31,8 +24,6 @@ RSpec.describe GameTeam do
   describe "GameTeam Class Methods" do
     before(:all) do
         GameTeamFactory.create_game_teams("./fixtures/game_teams_fixture.csv")
-        # GameTeamFactory.create_game_teams("./data/game_teams.csv")
-        #run with real data too
     end
 
     describe "::all_game_teams" do

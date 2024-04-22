@@ -1,4 +1,6 @@
 require 'simplecov'
+SimpleCov.start
+
 require 'csv'
 require 'pry'
 require "./lib/stat_tracker"
@@ -9,9 +11,6 @@ require './lib/game_factory'
 require './lib/team_factory'
 require './lib/team'
 require 'date'
-
-
-SimpleCov.start
 
 RSpec.configure do |config|
     config.formatter = :documentation
